@@ -1,0 +1,14 @@
+# build output
+build/
+.gradle/
+*.class
+
+# exercise scaffolding, comes back with exercism download
+build.gradle
+gradlew
+gradlew.bat
+gradle/
+.exercism/
+HELP.md
+HINTS.md
+/*/README.md
