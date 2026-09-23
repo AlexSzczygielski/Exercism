@@ -11,4 +11,9 @@ gradle/
 .exercism/
 HELP.md
 HINTS.md
-/*/README.md
+
+# jdtls / eclipse project files
+.classpath
+.project
+.settings/
+.factorypath

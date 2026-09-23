@@ -1,9 +1,27 @@
 public class Lasagna {
-    // TODO: define the 'expectedMinutesInOven()' method
+  private static final int SINGLE_LAYER_PREP_TIME = 2; // used by preparationTimeInMinutes
 
-    // TODO: define the 'remainingMinutesInOven()' method
+  // define the 'expectedMinutesInOven()' method
+  public int expectedMinutesInOven() {
+    return 40;
+  }
 
-    // TODO: define the 'preparationTimeInMinutes()' method
+  // define the 'remainingMinutesInOven()' method
+  public int remainingMinutesInOven(int minutesAlreadyInOven) {
+    return expectedMinutesInOven() - minutesAlreadyInOven;
+  }
 
-    // TODO: define the 'totalTimeInMinutes()' method
+  // define the 'preparationTimeInMinutes()' method
+  public int preparationTimeInMinutes(int numberOfLayers) {
+    // Check for negative numberOfLayers
+    if (numberOfLayers < 0) {
+      throw new IllegalArgumentException("numberOfLayers must be non negative, got: " + numberOfLayers);
+    }
+    return numberOfLayers * SINGLE_LAYER_PREP_TIME;
+  }
+
+  // define the 'totalTimeInMinutes()' method
+  public int totalTimeInMinutes(int numberOfLayers, int minutesAlreadyInOven) {
+    return preparationTimeInMinutes(numberOfLayers) + minutesAlreadyInOven;
+  }
 }
