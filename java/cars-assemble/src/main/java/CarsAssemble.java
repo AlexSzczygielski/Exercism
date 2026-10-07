@@ -25,6 +25,6 @@ public class CarsAssemble {
   }
 
   public int workingItemsPerMinute(int speed) {
-    return (int) productionRatePerHour(speed) / 60;
+    return (int) (productionRatePerHour(speed) / 60);
   }
 }
