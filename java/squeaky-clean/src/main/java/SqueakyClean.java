@@ -5,13 +5,7 @@ class SqueakyClean {
 
     for (char ch : identifier.toCharArray()) {
       char converted = ch;
-      switch (ch) {
-        case '4' -> converted = 'a';
-        case '3' -> converted = 'e';
-        case '0' -> converted = 'o';
-        case '1' -> converted = 'l';
-        case '7' -> converted = 't';
-      }
+      converted = convertLeet(converted);
 
       if (Character.isWhitespace(converted)) {
         builder.append('_');
@@ -29,5 +23,20 @@ class SqueakyClean {
     }
 
     return builder.toString();
+  }
+
+  /** Helper method responsible for cleaning leet code hacker style char */
+  private static char convertLeet(char ch) {
+    char converted = ch;
+    switch (ch) {
+      case '4' -> converted = 'a';
+      case '3' -> converted = 'e';
+      case '0' -> converted = 'o';
+      case '1' -> converted = 'l';
+      case '7' -> converted = 't';
+      default -> {
+      }
+    }
+    return converted;
   }
 }
