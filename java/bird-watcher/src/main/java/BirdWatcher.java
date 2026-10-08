@@ -1,6 +1,7 @@
 
 class BirdWatcher {
   private final int[] birdsPerDay;
+  private static final int BUSY_DAY_THRESHOLD = 5;
 
   public BirdWatcher(int[] birdsPerDay) {
     this.birdsPerDay = birdsPerDay.clone();
@@ -15,7 +16,7 @@ class BirdWatcher {
   }
 
   public void incrementTodaysCount() {
-    birdsPerDay[(birdsPerDay.length - 1)]++;
+    birdsPerDay[birdsPerDay.length - 1]++;
   }
 
   public boolean hasDayWithoutBirds() {
@@ -30,6 +31,7 @@ class BirdWatcher {
 
   public int getCountForFirstDays(int numberOfDays) {
     // Used clamping instead of strict checking, as that's what the tests required
+    // If numberOfDays exceeds the array length, sums all available days.
     int limit = Math.min(numberOfDays, birdsPerDay.length);
 
     int countForFirstDays = 0;
@@ -44,7 +46,7 @@ class BirdWatcher {
     int busyDaysCount = 0;
 
     for (int dailyBirds : birdsPerDay) {
-      if (dailyBirds >= 5) {
+      if (dailyBirds >= BUSY_DAY_THRESHOLD) {
         busyDaysCount++;
       }
     }
