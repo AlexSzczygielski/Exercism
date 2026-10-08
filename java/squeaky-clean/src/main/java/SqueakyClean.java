@@ -11,8 +11,6 @@ class SqueakyClean {
         case '0' -> converted = 'o';
         case '1' -> converted = 'l';
         case '7' -> converted = 't';
-        default -> {
-        }
       }
 
       if (Character.isWhitespace(converted)) {
@@ -20,11 +18,11 @@ class SqueakyClean {
       } else if (converted == '-') {
         // Skipping dash
         capitalizeNext = true;
+      } else if (!Character.isLetter(converted)) {
+        continue;
       } else if (capitalizeNext) {
         builder.append(Character.toUpperCase(converted));
         capitalizeNext = false;
-      } else if (!Character.isLetter(converted)) {
-        continue;
       } else {
         builder.append(converted);
       }
