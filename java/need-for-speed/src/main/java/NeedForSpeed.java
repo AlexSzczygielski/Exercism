@@ -4,8 +4,8 @@ class NeedForSpeed {
   private final int batteryDrain;
   private int distanceDriven = 0;
 
-  private final static int NITRO_SPEED = 50;
-  private final static int NITRO_DRAINAGE = 4;
+  private static final int NITRO_SPEED = 50;
+  private static final int NITRO_DRAINAGE = 4;
 
   NeedForSpeed(int speed, int batteryDrain) {
     this.speed = speed;
@@ -13,8 +13,20 @@ class NeedForSpeed {
 
   }
 
+  /**
+   * Single source of truth for whether the car can drive: the battery must hold
+   * at least as much charge as one drive consumes.
+   */
+  private boolean canDrive() {
+    return batteryLevel >= batteryDrain;
+  }
+
+  /**
+   * This does not use canDrive() as there is a possibility that canDrive() grows
+   * beyond battery drainage.
+   */
   public boolean batteryDrained() {
-    return batteryLevel < batteryDrain ? true : false;
+    return batteryLevel < batteryDrain;
   }
 
   public int distanceDriven() {
@@ -22,7 +34,7 @@ class NeedForSpeed {
   }
 
   public void drive() {
-    if (batteryLevel >= batteryDrain) {
+    if (canDrive()) {
       distanceDriven += speed;
       batteryLevel -= batteryDrain;
     }
