@@ -10,8 +10,8 @@ class Fighter {
 }
 
 class Warrior extends Fighter {
-  private static final int WARRIOR_OPPONENT_IS_VULNARABLE_DMG_POINTS = 10;
-  private static final int WARRIOR_OPPONENT_IS_NOT_VULNARABLE_DMG_POINTS = 6;
+  private static final int WARRIOR_OPPONENT_IS_VULNERABLE_DMG_POINTS = 10;
+  private static final int WARRIOR_OPPONENT_IS_NOT_VULNERABLE_DMG_POINTS = 6;
 
   @Override
   public String toString() {
@@ -25,8 +25,8 @@ class Warrior extends Fighter {
 
   @Override
   int getDamagePoints(Fighter fighter) {
-    return fighter.isVulnerable() ? WARRIOR_OPPONENT_IS_VULNARABLE_DMG_POINTS
-        : WARRIOR_OPPONENT_IS_NOT_VULNARABLE_DMG_POINTS;
+    return fighter.isVulnerable() ? WARRIOR_OPPONENT_IS_VULNERABLE_DMG_POINTS
+        : WARRIOR_OPPONENT_IS_NOT_VULNERABLE_DMG_POINTS;
   }
 }
 
