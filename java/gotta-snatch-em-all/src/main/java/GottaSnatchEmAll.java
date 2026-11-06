@@ -20,6 +20,12 @@ class GottaSnatchEmAll {
   }
 
   static Set<String> commonCards(List<Set<String>> collections) {
+    // empty collections = no common cards [edge case]
+    if (collections.isEmpty()) {
+      // returning mutable set to keep compliant with other methods
+      return new HashSet<>();
+    }
+
     // copy so retainAll doesn't modify the caller's set
     Set<String> common = new HashSet<>(collections.get(0));
 
