@@ -5,7 +5,7 @@ import java.time.temporal.TemporalAdjuster;
 import java.time.temporal.TemporalAdjusters;
 
 class SalonCalendar {
-  private static final int PAYDAY = 15;
+  private static final int PAYDAY_DAY_OF_MONTH = 15;
 
   public LocalDate standingAppointment(int year, Month month, int occurrence, DayOfWeek dayOfWeek) {
     LocalDate date = LocalDate.of(year, month, 1);
@@ -22,6 +22,7 @@ class SalonCalendar {
   }
 
   public LocalDate bookkeepingDay(int year, Month month) {
+    // Intentionally not using precedingWorkday() to show both approaches
     LocalDate date = LocalDate.of(year, month, 1);
     date = date.with(TemporalAdjusters.lastDayOfMonth());
     if (date.getDayOfWeek() == DayOfWeek.SATURDAY || date.getDayOfWeek() == DayOfWeek.SUNDAY) {
@@ -31,7 +32,8 @@ class SalonCalendar {
   }
 
   public LocalDate payday(int year, Month month) {
-    LocalDate date = LocalDate.of(year, month, PAYDAY);
+    // Solution using lambda function
+    LocalDate date = LocalDate.of(year, month, PAYDAY_DAY_OF_MONTH);
     return date.with(precedingWorkday());
   }
 
