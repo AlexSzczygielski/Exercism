@@ -13,15 +13,15 @@ public class GameMaster {
   }
 
   public String describe(TravelMethod travelMethod) {
-    return "You're traveling to your destination " + travelMethod.getMethodPreposition() + ' '
-        + travelMethod.toString().toLowerCase() + '.';
+    return "You're traveling to your destination " + travelMethod.getMethodPreposition() + " "
+        + travelMethod.toString().toLowerCase() + ".";
   }
 
   public String describe(Character character, Destination destination, TravelMethod travelMethod) {
-    return describe(character) + ' ' + describe(travelMethod) + ' ' + describe(destination);
+    return describe(character) + " " + describe(travelMethod) + " " + describe(destination);
   }
 
   public String describe(Character character, Destination destination) {
-    return describe(character) + ' ' + describe(DEFAULT_TRAVEL_METHOD) + ' ' + describe(destination);
+    return describe(character, destination, DEFAULT_TRAVEL_METHOD);
   }
 }
